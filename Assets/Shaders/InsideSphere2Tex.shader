@@ -4,8 +4,8 @@ Shader "Custom/Unlit_SphereInside2Tex"
 {
 	Properties 
 	{
-		_MainTex ("TopTex", 2D) = "white" {}
-		_SecondTex ("BotText", 2D) = "white" {}
+		_MainTex ("TopTex", 2D) = "black" {}
+		_SecondTex ("BotText", 2D) = "black" {}
 		_Color("Main Color", Color) = (1,1,1,1)
 	}
 		

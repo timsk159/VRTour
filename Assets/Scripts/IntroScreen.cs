@@ -21,12 +21,21 @@ public class IntroScreen : MonoBehaviour
         {
             but.OnTapped += HandleImageAudioClicked;
         }
+        VRView.OnFinished += VRView_OnFinished;
+    }
+
+    private void VRView_OnFinished()
+    {
+        gridGroup.blocksRaycasts = true;
+        iTween.ValueTo(gameObject, iTween.Hash("from", 0.0f, "to", 1.0f, "time", 0.4f, "onupdate", "FadeGroupUpdate"));
+
     }
 
     private void HandleImageAudioClicked(ImageAudioButton obj)
     {
         //Display loading.
 
+        gridGroup.blocksRaycasts = false;
         iTween.ValueTo(gameObject, iTween.Hash("from", 1.0f, "to", 0.0f, "time", 0.4f, "onupdate", "FadeGroupUpdate"));
 
         StartCoroutine(obj.LoadRoutine(LoadingFinished));

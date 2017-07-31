@@ -27,7 +27,7 @@ public class IntroScreen : MonoBehaviour
     private void VRView_OnFinished()
     {
         gridGroup.blocksRaycasts = true;
-        iTween.ValueTo(gameObject, iTween.Hash("from", 0.0f, "to", 1.0f, "time", 0.4f, "onupdate", "FadeGroupUpdate"));
+        iTween.ValueTo(gameObject, iTween.Hash("from", 0.0f, "to", 1.0f, "time", 0.6f, "onupdate", "FadeGroupUpdate"));
 
     }
 
@@ -36,7 +36,7 @@ public class IntroScreen : MonoBehaviour
         //Display loading.
 
         gridGroup.blocksRaycasts = false;
-        iTween.ValueTo(gameObject, iTween.Hash("from", 1.0f, "to", 0.0f, "time", 0.4f, "onupdate", "FadeGroupUpdate"));
+        iTween.ValueTo(gameObject, iTween.Hash("from", 1.0f, "to", 0.0f, "time", 0.6f, "onupdate", "FadeGroupUpdate"));
 
         StartCoroutine(obj.LoadRoutine(LoadingFinished));
     }

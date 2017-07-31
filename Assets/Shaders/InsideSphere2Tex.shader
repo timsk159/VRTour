@@ -11,7 +11,7 @@ Shader "Custom/Unlit_SphereInside2Tex"
 		
 	SubShader 
 	{
-		Tags { "RenderType"="Opaque" }
+		Tags { "Queue"="Transparent" "RenderType"="Transparent" }
 		LOD 100
 		ZWrite on
 		// Non-lightmapped
@@ -19,6 +19,8 @@ Shader "Custom/Unlit_SphereInside2Tex"
 		{
 			Lighting Off
 			Cull Front
+
+			Blend SrcAlpha OneMinusSrcAlpha
 
 		    CGPROGRAM
             #pragma vertex vert
@@ -43,6 +45,8 @@ Shader "Custom/Unlit_SphereInside2Tex"
 			float4 _MainTex_ST;
 			float4 _SecondTex_ST;
 
+			float4 _Color;
+
             v2f vert (appdata v)
             {
                 v2f o;
@@ -58,12 +62,12 @@ Shader "Custom/Unlit_SphereInside2Tex"
 				if(i.uv.y >= 0.5)
 				{
 					float2 newUV = TRANSFORM_TEX(i.uv, _MainTex);
-					col = tex2D(_MainTex, newUV);
+					col = tex2D(_MainTex, newUV) * _Color;
 				}
 				else
 				{
 					float2 newUV = TRANSFORM_TEX(i.uv, _SecondTex);
-					col = tex2D(_SecondTex, newUV);
+					col = tex2D(_SecondTex, newUV) * _Color;
 				}
 
                 return col;

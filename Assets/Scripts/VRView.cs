@@ -41,7 +41,8 @@ public class VRView : MonoBehaviour
     private void HandleBackButtonPressed()
     {
         menuGroup.blocksRaycasts = false;
-        iTween.ValueTo(gameObject, iTween.Hash("from", 1.0f, "to", 0.0f, "time", 0.4f, "onupdate", "FadeGroupUpdate"));
+        iTween.ValueTo(gameObject, iTween.Hash("from", 1.0f, "to", 0.0f, "time", 0.6f, "onupdate", "FadeGroupUpdate"));
+        iTween.ValueTo(gameObject, iTween.Hash("from", 1.0f, "to", 0.0f, "time", 0.6f, "onupdate", "FadeSphereUpdate"));
         if (OnFinished != null)
             OnFinished();
     }
@@ -52,11 +53,19 @@ public class VRView : MonoBehaviour
         sphereMat.SetTexture("_SecondTex", obj.BotTex);
 
         menuGroup.blocksRaycasts = true;
-        iTween.ValueTo(gameObject, iTween.Hash("from", 0.0f, "to", 1.0f, "time", 0.4f, "onupdate", "FadeGroupUpdate"));
+        iTween.ValueTo(gameObject, iTween.Hash("from", 0.0f, "to", 1.0f, "time", 0.6f, "onupdate", "FadeGroupUpdate"));
+        iTween.ValueTo(gameObject, iTween.Hash("from", 0.0f, "to", 1.0f, "time", 0.6f, "onupdate", "FadeSphereUpdate"));
     }
 
     void FadeGroupUpdate(float alpha)
     {
         menuGroup.alpha = alpha;
+    }
+
+    void FadeSphereUpdate(float alpha)
+    {
+        var col = sphereMat.GetColor("_Color");
+        col.a = alpha;
+        sphereMat.SetColor("_Color", col);
     }
 }

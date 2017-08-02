@@ -14,6 +14,7 @@ public class IntroScreen : MonoBehaviour
 
     [SerializeField]
     CanvasGroup gridGroup;
+    
 
     private void Start()
     {
@@ -22,13 +23,15 @@ public class IntroScreen : MonoBehaviour
             but.OnTapped += HandleImageAudioClicked;
         }
         VRView.OnFinished += VRView_OnFinished;
+        AudioController.Instance.PlayEngine();
     }
 
     private void VRView_OnFinished()
     {
+        AudioController.Instance.StopMusic();
+        AudioController.Instance.PlayEngine();
         gridGroup.blocksRaycasts = true;
         iTween.ValueTo(gameObject, iTween.Hash("from", 0.0f, "to", 1.0f, "time", 0.6f, "onupdate", "FadeGroupUpdate"));
-
     }
 
     private void HandleImageAudioClicked(ImageAudioButton obj)
@@ -37,6 +40,7 @@ public class IntroScreen : MonoBehaviour
 
         gridGroup.blocksRaycasts = false;
         iTween.ValueTo(gameObject, iTween.Hash("from", 1.0f, "to", 0.0f, "time", 0.6f, "onupdate", "FadeGroupUpdate"));
+        AudioController.Instance.StopEngine();
 
         StartCoroutine(obj.LoadRoutine(LoadingFinished));
     }
@@ -45,7 +49,9 @@ public class IntroScreen : MonoBehaviour
     {
         //Hide Loading.
 
-        if(OnLoadingFinished != null)
+        AudioController.Instance.PlayMusic(assets.Audio);
+
+        if (OnLoadingFinished != null)
             OnLoadingFinished(assets);
     }
 

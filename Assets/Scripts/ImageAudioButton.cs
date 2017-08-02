@@ -19,6 +19,9 @@ public class ImageAudioButton : MonoBehaviour
 
     [Header("Assets")]
 
+    [SerializeField]
+    AudioClip clickClip;
+
     [Space()]
 
     [Header("GameObjects")]
@@ -58,6 +61,7 @@ public class ImageAudioButton : MonoBehaviour
 
     private void FireOnTapped()
     {
+        AudioController.Instance.PlayOneShot(clickClip);
         if (OnTapped != null)
             OnTapped(this);
     }

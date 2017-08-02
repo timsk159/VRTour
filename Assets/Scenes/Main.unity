@@ -519,8 +519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4146d0b79546048a57bc2e946bd972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageTopName: Durham_Cathedral_top
-  imageBotName: Durham_Cathedral_bot
+  imageTopName: Durham_Cathedral_left
+  imageBotName: Durham_Cathedral_right
   audioClipName: Durham_Cathedral
   clickClip: {fileID: 8300000, guid: 2a791d6a1bfeacb4ba8ba1a3c1f1399a, type: 3}
   button: {fileID: 707484726}
@@ -1041,7 +1041,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 150, y: 37.78}
   savedColor: {r: 0.8602941, g: 0.8602941, b: 0.8602941, a: 1}
-  savedTextUV0: {x: 0, y: 0.00390625}
+  savedTextUV0: {x: 0, y: 0.0078125}
   savedFill: 0
 --- !u!1 &1166361685
 GameObject:
@@ -1648,7 +1648,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 167.86, y: 35.36}
   savedColor: {r: 0.8602941, g: 0.8602941, b: 0.8602941, a: 1}
-  savedTextUV0: {x: 0, y: 0.00390625}
+  savedTextUV0: {x: 0, y: 0.0078125}
   savedFill: 0
 --- !u!1 &1571339400
 GameObject:
@@ -1780,8 +1780,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4146d0b79546048a57bc2e946bd972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageTopName: Westminster_top
-  imageBotName: Westminster_bot
+  imageTopName: Westminster_left
+  imageBotName: Westminster_right
   audioClipName: Westminster
   clickClip: {fileID: 8300000, guid: 133e68bcebe978b45a719363990f5df7, type: 3}
   button: {fileID: 1634673407}
@@ -2045,8 +2045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4146d0b79546048a57bc2e946bd972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageTopName: City_Hall_top
-  imageBotName: City_Hall_bot
+  imageTopName: City_Hall_left
+  imageBotName: City_Hall_right
   audioClipName: City_Hall
   clickClip: {fileID: 8300000, guid: 3754c4390ee6c0445bd07c25b8f762f7, type: 3}
   button: {fileID: 1726064276}
@@ -2194,8 +2194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4146d0b79546048a57bc2e946bd972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageTopName: Chatsworth_House_top
-  imageBotName: Chatsworth_House_bot
+  imageTopName: Chatsworth_House_left
+  imageBotName: Chatsworth_House_right
   audioClipName: Chatsworth_House
   clickClip: {fileID: 8300000, guid: 4be0fefc8780b2644ba08e9b8f085724, type: 3}
   button: {fileID: 1830178380}
@@ -2341,7 +2341,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 150, y: 37.78}
   savedColor: {r: 0.8602941, g: 0.8602941, b: 0.8602941, a: 1}
-  savedTextUV0: {x: 0.013671875, y: 0.078125}
+  savedTextUV0: {x: 0.02734375, y: 0.15625}
   savedFill: 0
 --- !u!1 &2006623667
 GameObject:
@@ -2434,7 +2434,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 150, y: 37.78}
   savedColor: {r: 0.8602941, g: 0.8602941, b: 0.8602941, a: 1}
-  savedTextUV0: {x: 0.13476562, y: 0.03125}
+  savedTextUV0: {x: 0.26953125, y: 0.0625}
   savedFill: 0
 --- !u!1 &2015125085
 GameObject:

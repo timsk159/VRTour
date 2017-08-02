@@ -59,7 +59,7 @@ Shader "Custom/Unlit_SphereInside2Tex"
             {
                 // sample texture and return it
                 fixed4 col;
-				if(i.uv.y >= 0.5)
+				if(i.uv.x >= 0.5)
 				{
 					float2 newUV = TRANSFORM_TEX(i.uv, _MainTex);
 					col = tex2D(_MainTex, newUV) * _Color;

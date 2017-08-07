@@ -20,7 +20,7 @@ public class ImageAudioButton : MonoBehaviour
     [Header("Assets")]
 
     [SerializeField]
-    AudioClip clickClip;
+    public AudioClip clickClip;
 
     [Space()]
 
@@ -29,15 +29,14 @@ public class ImageAudioButton : MonoBehaviour
     Button button;
     [SerializeField]
     Image thumbnailImage;
-
-
+    
     public Action OnHoverStart;
     public Action OnHoverEnd;
     public Action<ImageAudioButton> OnTapped;
 
     public void Start()
     {
-        button.onClick.AddListener(FireOnTapped);
+        button.onClick.AddListener(OnButtonClicked);
         var hoverStart = new UnityEngine.EventSystems.EventTrigger.Entry() { eventID = UnityEngine.EventSystems.EventTriggerType.PointerEnter };
         var hoverEnd = new UnityEngine.EventSystems.EventTrigger.Entry() { eventID = UnityEngine.EventSystems.EventTriggerType.PointerExit };
         hoverStart.callback.AddListener(FireHoverStart);
@@ -59,19 +58,18 @@ public class ImageAudioButton : MonoBehaviour
             OnHoverStart();
     }
 
-    private void FireOnTapped()
+    private void OnButtonClicked()
     {
-        AudioController.Instance.PlayOneShot(clickClip);
         if (OnTapped != null)
             OnTapped(this);
     }
 
-    public void LoadAsync(MonoBehaviour host, Action<VRViewAssets> onComplete)
+    public void LoadAsync(MonoBehaviour host, Action<PhotoSphereAssets> onComplete)
     {
         host.StartCoroutine(LoadRoutine(onComplete));
     }
 
-    public IEnumerator LoadRoutine(Action<VRViewAssets> onComplete)
+    public IEnumerator LoadRoutine(Action<PhotoSphereAssets> onComplete)
     {
         var loadReqTop = Resources.LoadAsync<Texture2D>(imageTopName);
         var loadReqBot = Resources.LoadAsync<Texture2D>(imageBotName);
@@ -82,7 +80,7 @@ public class ImageAudioButton : MonoBehaviour
             yield return null;
         }
 
-        var assets = new VRViewAssets((Texture2D)loadReqTop.asset, (Texture2D)loadReqBot.asset, (AudioClip)loadReqAudio.asset);
+        var assets = new PhotoSphereAssets((Texture2D)loadReqTop.asset, (Texture2D)loadReqBot.asset, (AudioClip)loadReqAudio.asset);
         onComplete(assets);
     }
 }

@@ -4,20 +4,20 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
-public class VRViewAssets
+public class PhotoSphereAssets
 {
     public Texture2D TopTex { get; private set; }
     public Texture2D BotTex { get; private set; }
     public AudioClip Audio { get; private set; }
 
-    public VRViewAssets(Texture2D topTex, Texture2D botTex, AudioClip audio)
+    public PhotoSphereAssets(Texture2D topTex, Texture2D botTex, AudioClip audio)
     {
         this.TopTex = topTex; this.BotTex = botTex; this.Audio = audio;
     }
 
 }
 
-public class VRView : MonoBehaviour
+public class PhotoSphereView : MonoBehaviour
 {
     public static event Action OnFinished;
 
@@ -29,6 +29,8 @@ public class VRView : MonoBehaviour
 
     [SerializeField]
     Button backButton;
+
+    bool viewing;
 
     private void Start()
     {
@@ -45,10 +47,12 @@ public class VRView : MonoBehaviour
         iTween.ValueTo(gameObject, iTween.Hash("from", 1.0f, "to", 0.0f, "time", 0.6f, "onupdate", "FadeSphereUpdate"));
         if (OnFinished != null)
             OnFinished();
+        viewing = false;
     }
 
-    private void IntroScreen_OnLoadingFinished(VRViewAssets obj)
+    private void IntroScreen_OnLoadingFinished(PhotoSphereAssets obj)
     {
+        viewing = true;
         sphereMat.SetTexture("_MainTex", obj.TopTex);
         sphereMat.SetTexture("_SecondTex", obj.BotTex);
 
@@ -67,5 +71,16 @@ public class VRView : MonoBehaviour
         var col = sphereMat.GetColor("_Color");
         col.a = alpha;
         sphereMat.SetColor("_Color", col);
+    }
+
+    void Update()
+    {
+        if (viewing)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                HandleBackButtonPressed();
+            }
+        }
     }
 }

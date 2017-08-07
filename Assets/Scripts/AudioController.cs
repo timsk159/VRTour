@@ -23,6 +23,13 @@ public class AudioController : MonoBehaviour
         instance = this;
     }
 
+    public void ToggleMute()
+    {
+        musicSource.mute = !musicSource.mute;
+        oneShotSource.mute = !oneShotSource.mute;
+        engineSource.mute = !engineSource.mute;
+    }
+
     public void PlayEngine()
     {
         engineSource.time = 0;
@@ -71,6 +78,18 @@ public class AudioController : MonoBehaviour
     public void PlayOneShot(AudioClip clip)
     {
         oneShotSource.PlayOneShot(clip);
+    }
+
+    public void PlaySequence(AudioClip clip1, AudioClip clip2)
+    {
+        StartCoroutine(PlaySequenceRoutine(clip1, clip2));
+    }
+
+    public IEnumerator PlaySequenceRoutine(AudioClip clip1, AudioClip clip2)
+    {
+        oneShotSource.PlayOneShot(clip1);
+        yield return new WaitForSeconds(clip1.length);
+        oneShotSource.PlayOneShot(clip2);
     }
 
 }

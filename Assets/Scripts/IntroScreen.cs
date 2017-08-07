@@ -7,14 +7,19 @@ using UnityEngine.EventSystems;
 
 public class IntroScreen : MonoBehaviour
 {
-    public static event Action<VRViewAssets> OnLoadingFinished;
+    public static event Action<PhotoSphereAssets> OnLoadingFinished;
+
+    [SerializeField]
+    VRModeSwitcher vrModeSwitcher;
 
     [SerializeField]
     List<ImageAudioButton> imageAudioButs;
 
     [SerializeField]
     CanvasGroup gridGroup;
-    
+
+    [SerializeField]
+    AudioClip bellClip;
 
     private void Start()
     {
@@ -22,7 +27,7 @@ public class IntroScreen : MonoBehaviour
         {
             but.OnTapped += HandleImageAudioClicked;
         }
-        VRView.OnFinished += VRView_OnFinished;
+        PhotoSphereView.OnFinished += VRView_OnFinished;
         AudioController.Instance.PlayEngine();
     }
 
@@ -37,15 +42,11 @@ public class IntroScreen : MonoBehaviour
     private void HandleImageAudioClicked(ImageAudioButton obj)
     {
         //Display loading.
+        StartCoroutine(FinishIntroRoutine(obj));
 
-        gridGroup.blocksRaycasts = false;
-        iTween.ValueTo(gameObject, iTween.Hash("from", 1.0f, "to", 0.0f, "time", 0.6f, "onupdate", "FadeGroupUpdate"));
-        AudioController.Instance.StopEngine();
-
-        StartCoroutine(obj.LoadRoutine(LoadingFinished));
     }
 
-    private void LoadingFinished(VRViewAssets assets)
+    private void LoadingFinished(PhotoSphereAssets assets)
     {
         //Hide Loading.
 
@@ -55,9 +56,39 @@ public class IntroScreen : MonoBehaviour
             OnLoadingFinished(assets);
     }
 
+    IEnumerator FinishIntroRoutine(ImageAudioButton obj)
+    {
+        gridGroup.blocksRaycasts = false;
+        iTween.ValueTo(gameObject, iTween.Hash("from", 1.0f, "to", 0.0f, "time", 0.6f, "onupdate", "FadeGroupUpdate"));
+        yield return StartCoroutine(AudioController.Instance.PlaySequenceRoutine(bellClip, obj.clickClip));
+        AudioController.Instance.StopEngine();
+
+        StartCoroutine(obj.LoadRoutine(LoadingFinished));
+    }
+
     private void FadeGroupUpdate(float alpha)
     {
         gridGroup.alpha = alpha;
+    }
+
+    public void ToggleSoundPressed()
+    {
+        AudioController.Instance.ToggleMute();
+    }
+
+    public void VRModePressed()
+    {
+        vrModeSwitcher.MagicWindowButtonPressed();
+    }
+
+    public void WebsitePressed()
+    {
+        Application.OpenURL("www.google.com");
+    }
+
+    public void MapsPressed()
+    {
+
     }
 }
 

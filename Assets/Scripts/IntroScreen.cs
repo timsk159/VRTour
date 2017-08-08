@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 public class IntroScreen : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class IntroScreen : MonoBehaviour
     List<ImageAudioButton> imageAudioButs;
 
     [SerializeField]
-    CanvasGroup gridGroup;
+    List<CanvasGroup> groups;
 
     [SerializeField]
     AudioClip bellClip;
@@ -35,7 +36,7 @@ public class IntroScreen : MonoBehaviour
     {
         AudioController.Instance.StopMusic();
         AudioController.Instance.PlayEngine();
-        gridGroup.blocksRaycasts = true;
+        groups.ForEach(e => e.blocksRaycasts = true);
         iTween.ValueTo(gameObject, iTween.Hash("from", 0.0f, "to", 1.0f, "time", 0.6f, "onupdate", "FadeGroupUpdate"));
     }
 
@@ -58,7 +59,7 @@ public class IntroScreen : MonoBehaviour
 
     IEnumerator FinishIntroRoutine(ImageAudioButton obj)
     {
-        gridGroup.blocksRaycasts = false;
+        groups.ForEach(e => e.blocksRaycasts = false);
         iTween.ValueTo(gameObject, iTween.Hash("from", 1.0f, "to", 0.0f, "time", 0.6f, "onupdate", "FadeGroupUpdate"));
         yield return StartCoroutine(AudioController.Instance.PlaySequenceRoutine(bellClip, obj.clickClip));
         AudioController.Instance.StopEngine();
@@ -68,7 +69,7 @@ public class IntroScreen : MonoBehaviour
 
     private void FadeGroupUpdate(float alpha)
     {
-        gridGroup.alpha = alpha;
+        groups.ForEach(e => e.alpha = alpha);
     }
 
     public void ToggleSoundPressed()

@@ -14,6 +14,7 @@ public class VRModeSwitcher : MonoBehaviour
 
     private void Update()
     {
+#if !UNITY_EDITOR
         if (!UnityEngine.VR.VRSettings.enabled)
         {
             foreach(var cam in cameras)
@@ -21,5 +22,6 @@ public class VRModeSwitcher : MonoBehaviour
                 cam.transform.rotation = UnityEngine.VR.InputTracking.GetLocalRotation(UnityEngine.VR.VRNode.CenterEye);
             }
         }
+#endif
     }
 }

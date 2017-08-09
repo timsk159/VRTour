@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 577bfd4187dc1ee4a985278bc0293498, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -156,7 +156,7 @@ Camera:
   m_GameObject: {fileID: 27225633}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -190,7 +190,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 27225633}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -885,8 +885,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4146d0b79546048a57bc2e946bd972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageTopName: Durham_Cathedral_left
-  imageBotName: Durham_Cathedral_right
+  img_b: 
+  img_d: 
+  img_f: 
+  img_l: 
+  img_r: 
+  img_u: 
   audioClipName: Durham_Cathedral
   clickClip: {fileID: 8300000, guid: 2a791d6a1bfeacb4ba8ba1a3c1f1399a, type: 3}
   button: {fileID: 707484726}
@@ -1070,7 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0521857388dce5047a235c1857bd8970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sphereMat: {fileID: 2100000, guid: a3f02720d3cd5914d96286bd219aa6ce, type: 2}
+  sphereMat: {fileID: 2100000, guid: 577bfd4187dc1ee4a985278bc0293498, type: 2}
   menuGroup: {fileID: 1446813990}
   backButton: {fileID: 571461144}
 --- !u!114 &764326067
@@ -2367,8 +2371,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4146d0b79546048a57bc2e946bd972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageTopName: Westminster_left
-  imageBotName: Westminster_right
+  img_b: 
+  img_d: 
+  img_f: 
+  img_l: 
+  img_r: 
+  img_u: 
   audioClipName: Westminster
   clickClip: {fileID: 8300000, guid: 133e68bcebe978b45a719363990f5df7, type: 3}
   button: {fileID: 1634673407}
@@ -2632,8 +2640,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4146d0b79546048a57bc2e946bd972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageTopName: City_Hall_left
-  imageBotName: City_Hall_right
+  img_b: 
+  img_d: 
+  img_f: 
+  img_l: 
+  img_r: 
+  img_u: 
   audioClipName: City_Hall
   clickClip: {fileID: 8300000, guid: 3754c4390ee6c0445bd07c25b8f762f7, type: 3}
   button: {fileID: 1726064276}
@@ -2868,8 +2880,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4146d0b79546048a57bc2e946bd972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageTopName: Chatsworth_House_left
-  imageBotName: Chatsworth_House_right
+  img_b: 
+  img_d: 
+  img_f: 
+  img_l: 
+  img_r: 
+  img_u: 
   audioClipName: Chatsworth_House
   clickClip: {fileID: 8300000, guid: 2f83f91bb48ec884eaa417f30c1b5091, type: 3}
   button: {fileID: 1830178380}
@@ -3015,7 +3031,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 250, y: 150}
   savedColor: {r: 0.8602941, g: 0.8602941, b: 0.8602941, a: 1}
-  savedTextUV0: {x: 0.2890625, y: 0.1328125}
+  savedTextUV0: {x: 0.17578125, y: 0.59375}
   savedFill: 0
 --- !u!1 &1910425693
 GameObject:
@@ -3154,7 +3170,7 @@ MonoBehaviour:
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 250, y: 150}
   savedColor: {r: 0.8602941, g: 0.8602941, b: 0.8602941, a: 1}
-  savedTextUV0: {x: 0.03125, y: 0.71484375}
+  savedTextUV0: {x: 0.2890625, y: 0.1328125}
   savedFill: 0
 --- !u!1 &2062100196
 GameObject:
@@ -3210,6 +3226,7 @@ GameObject:
   - component: {fileID: 2077580587}
   - component: {fileID: 2077580589}
   - component: {fileID: 2077580586}
+  - component: {fileID: 2077580585}
   m_Layer: 5
   m_Name: IntroCanvas
   m_TagString: Untagged
@@ -3217,6 +3234,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2077580585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2077580584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739800cd36aba44e9b04ce977e5784bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawDebugRays: 0
+  ignoreReversedGraphics: 0
+  blockingObjects: 0
+  blockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &2077580586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3641,7 +3675,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &2141960601
 MeshRenderer:
   m_ObjectHideFlags: 0

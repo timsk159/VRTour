@@ -6,13 +6,20 @@ using UnityEngine.UI;
 
 public class PhotoSphereAssets
 {
-    public Texture2D TopTex { get; private set; }
-    public Texture2D BotTex { get; private set; }
+    public Texture2D Tex_b { get; private set; }
+    public Texture2D Tex_d { get; private set; }
+    public Texture2D Tex_f { get; private set; }
+    public Texture2D Tex_l { get; private set; }
+    public Texture2D Tex_r { get; private set; }
+    public Texture2D Tex_u { get; private set; }
     public AudioClip Audio { get; private set; }
 
-    public PhotoSphereAssets(Texture2D topTex, Texture2D botTex, AudioClip audio)
+    public PhotoSphereAssets(Texture2D tex_b, Texture2D tex_d, Texture2D tex_f
+        , Texture2D tex_l, Texture2D tex_r, Texture2D tex_u, AudioClip audio)
     {
-        this.TopTex = topTex; this.BotTex = botTex; this.Audio = audio;
+        this.Tex_b = tex_b; this.Tex_d = tex_d; this.Tex_f = tex_f;
+        this.Tex_l = tex_l; this.Tex_r = tex_r; this.Tex_u = tex_u;
+        this.Audio = audio;
     }
 
 }
@@ -53,8 +60,12 @@ public class PhotoSphereView : MonoBehaviour
     private void IntroScreen_OnLoadingFinished(PhotoSphereAssets obj)
     {
         viewing = true;
-        sphereMat.SetTexture("_MainTex", obj.TopTex);
-        sphereMat.SetTexture("_SecondTex", obj.BotTex);
+        sphereMat.SetTexture("_FrontTex", obj.Tex_f);
+        sphereMat.SetTexture("_BackTex", obj.Tex_b);
+        sphereMat.SetTexture("_LeftTex", obj.Tex_l);
+        sphereMat.SetTexture("_RightTex", obj.Tex_r);
+        sphereMat.SetTexture("_UpTex", obj.Tex_u);
+        sphereMat.SetTexture("_DownTex", obj.Tex_d);
 
         menuGroup.blocksRaycasts = true;
         iTween.ValueTo(gameObject, iTween.Hash("from", 0.0f, "to", 1.0f, "time", 0.6f, "onupdate", "FadeGroupUpdate"));
@@ -68,9 +79,12 @@ public class PhotoSphereView : MonoBehaviour
 
     void FadeSphereUpdate(float alpha)
     {
-        var col = sphereMat.GetColor("_Color");
+        var col = sphereMat.GetColor("_Tint");
+        col.r = alpha;
+        col.g = alpha;
+        col.b = alpha;
         col.a = alpha;
-        sphereMat.SetColor("_Color", col);
+        sphereMat.SetColor("_Tint", col);
     }
 
     void Update()

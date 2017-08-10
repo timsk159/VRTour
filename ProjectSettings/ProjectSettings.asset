@@ -208,8 +208,13 @@ PlayerSettings:
   iOSDeviceRequirements: []
   iOSURLSchemes: []
   iOSBackgroundModes: 0
+<<<<<<< HEAD
   iOSMetalForceHardShadows: 0
   metalEditorSupport: 0
+=======
+  iOSMetalForceHardShadows: 1
+  metalEditorSupport: 1
+>>>>>>> d2dcc5e7c09d1d8f4af413f56a2f36198467f4c9
   metalAPIValidation: 1
   iOSRenderExtraFrameOnPause: 0
   appleDeveloperTeamID: 
@@ -238,9 +243,12 @@ PlayerSettings:
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: iOSSupport
     m_APIs: 08000000
+<<<<<<< HEAD
     m_Automatic: 1
   - m_BuildTarget: MacStandaloneSupport
     m_APIs: 1000000011000000
+=======
+>>>>>>> d2dcc5e7c09d1d8f4af413f56a2f36198467f4c9
     m_Automatic: 0
   m_BuildTargetVRSettings:
   - m_BuildTarget: Android

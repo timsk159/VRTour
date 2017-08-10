@@ -9,9 +9,18 @@ public class ImageAudioButton : MonoBehaviour
 {
     [Header("Resources")]
     [SerializeField]
-    string imageTopName;
+    string img_b;
     [SerializeField]
-    string imageBotName;
+    string img_d;
+    [SerializeField]
+    string img_f;
+    [SerializeField]
+    string img_l;
+    [SerializeField]
+    string img_r;
+    [SerializeField]
+    string img_u;
+
     [SerializeField]
     string audioClipName;
 
@@ -71,16 +80,25 @@ public class ImageAudioButton : MonoBehaviour
 
     public IEnumerator LoadRoutine(Action<PhotoSphereAssets> onComplete)
     {
-        var loadReqTop = Resources.LoadAsync<Texture2D>(imageTopName);
-        var loadReqBot = Resources.LoadAsync<Texture2D>(imageBotName);
+        var loadReq1 = Resources.LoadAsync<Texture2D>(img_b);
+        var loadReq2 = Resources.LoadAsync<Texture2D>(img_d);
+        var loadReq3 = Resources.LoadAsync<Texture2D>(img_f);
+        var loadReq4 = Resources.LoadAsync<Texture2D>(img_l);
+        var loadReq5 = Resources.LoadAsync<Texture2D>(img_r);
+        var loadReq6 = Resources.LoadAsync<Texture2D>(img_u);
         var loadReqAudio = Resources.LoadAsync<AudioClip>(audioClipName);
 
-        while (!loadReqTop.isDone && !loadReqBot.isDone && !loadReqAudio.isDone)
+        while (!loadReq1.isDone && !loadReq2.isDone && !loadReq3.isDone
+            && !loadReq4.isDone && !loadReq5.isDone && !loadReq6.isDone 
+            && !loadReqAudio.isDone)
         {
             yield return null;
         }
 
-        var assets = new PhotoSphereAssets((Texture2D)loadReqTop.asset, (Texture2D)loadReqBot.asset, (AudioClip)loadReqAudio.asset);
+        var assets = new PhotoSphereAssets((Texture2D)loadReq1.asset, (Texture2D)loadReq2.asset,
+            (Texture2D)loadReq3.asset, (Texture2D)loadReq4.asset,
+            (Texture2D)loadReq5.asset, (Texture2D)loadReq6.asset, 
+            (AudioClip)loadReqAudio.asset);
         onComplete(assets);
     }
 }
